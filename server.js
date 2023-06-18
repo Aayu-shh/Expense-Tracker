@@ -1,12 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 
+const db = require('./util/database');
+
 const app = express();
 
 app.use(cors());
 
 app.use('/',(req,res)=>{
-    res.send("API running");
+    db.execute('SELECT * FROM expenses')
+        .then(result => res.send(result[0]))
+        .catch(err => console.log(err));
+    
 });
 
 app.listen(5000,()=>{
