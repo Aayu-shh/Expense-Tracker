@@ -7,4 +7,4 @@ A Fullstack Expense Tracker App with following funcionalities :-
 TechStack Used :-
 
 * FrontEnd : HTML, CSS , JavaScript
-* BackEnd : NodeJs , MySql
+* BackEnd : NodeJs , MySql , Sequelize
