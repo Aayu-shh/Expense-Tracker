@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.3.5",
+    "nodemon": "^2.0.22",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "expense-tracker",
+  "description": "A Fullstack Expense Tracker App with following funcionalities :-\r 1. Add Amount of Expense, a Description, a Type of Expense\r 2. Expenses show up as List below in real-time.\r 3. Edit any Expense in the List.\r 4. Delete any Expense from the List.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aayu-shh/Expense-Tracker.git"
+  },
+  "keywords": [
+    "expense"
+  ],
+  "author": "Aayush Agrawal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aayu-shh/Expense-Tracker/issues"
+  },
+  "homepage": "https://github.com/Aayu-shh/Expense-Tracker#readme"
+}
