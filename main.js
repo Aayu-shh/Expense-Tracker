@@ -5,18 +5,21 @@ const type = document.getElementById('expenseType');
 
 const itemList = document.querySelector('.items');
 
-
-console.log(amt.value)
-
 window.addEventListener('DOMContentLoaded',(e)=>{
-    showOutput() //to add a loop onto gotten Data
+    axios.get('http://localhost:5000/expenses')
+    .then(resultObj => {
+    (resultObj.data).forEach(exp => {
+        showOutput(exp);
+    });
+    })
+    .catch(err => console.log(err));
 });
 
 myForm.addEventListener('submit',(e)=>{
     e.preventDefault();
     let exp = {
-        amt: amt.value,
-        desc: desc.value,
+        amount: amt.value,
+        descp: desc.value,
         type: type.value
     }
     showOutput(exp);
@@ -28,7 +31,7 @@ function showOutput(res){
     delBtn.appendChild(document.createTextNode('Delete'))
     const editBtn = document.createElement('button');
     editBtn.appendChild(document.createTextNode('Edit'))
-    li.appendChild(document.createTextNode(`${res.amt}: ${res.desc} : ${res.type}`))
+    li.appendChild(document.createTextNode(`${res.amount}: ${res.descp} : ${res.type}`))
     delBtn.classList = 'btn btn-danger m-2';
     editBtn.classList = 'btn btn-warning';
     li.append(delBtn,editBtn);

@@ -10,7 +10,7 @@
 
 <body style="background-color:rgba(214, 228, 108, 0.422); font-family:Times New Roman; font-size: large;">
     <section class="container">
-        <form id="my-expense-form">
+        <form action="/add-expense" method="post" id="my-expense-form">
 
             <div class="row mt-3 mb-3">
                 <h1>Add Expenses</h1>
@@ -41,15 +41,15 @@
             <h2 class="sub-heading">Expenses Incurred</h2>
             <div>
                 <ul class="items">
-                    <li class="list-group-item-info">First Li</li>
-                    <!-- <li class="list-group-item border border-2 border-dark-subtle mb-3">Anmol</li>
-                            <li class="list-group-item border border-2 border-dark-subtle mb-3">Aditi</li> -->
                 </ul>
             </div>
         </div>
     </section>>
 
     <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>
