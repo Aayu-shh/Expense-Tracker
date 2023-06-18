@@ -13,14 +13,16 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/',(req,res)=>{
-    res.sendFile(__dirname+'/index.html');
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/expenses',adminController.showExpenses)
+app.get('/expenses', adminController.showExpenses)
 
-app.post('/add-expense',adminController.addExpense);
+app.post('/add-expense', adminController.addExpense);
 
-app.listen(5000,()=>{
+app.delete('/delete-expense/:id', adminController.deleteExpense);
+
+app.listen(5000, () => {
     console.log('listening to port 5000')
 })

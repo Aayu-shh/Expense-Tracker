@@ -23,9 +23,12 @@ myForm.addEventListener('submit', (e) => {
         type: type.value
     }
     axios.post('http://localhost:5000/add-expense', exp)
-        .then(() => showOutput(exp))
-        .catch(err=>console.log(err));
-        
+        .then(() => {
+            axios.get('http://localhost:5000/expenses')
+                .then(resultObj => showOutput(resultObj.data[resultObj.data.length - 1]));
+        })
+        .catch(err => console.log(err));
+
 })
 
 function showOutput(res) {
@@ -45,11 +48,26 @@ function showOutput(res) {
         type: res.type
     }
     delBtn.onclick = () => {
-        itemList.removeChild(li);
-        console.log(expLocal.desc + ' was deleted!');
+        axios.delete(`http://localhost:5000/delete-expense/${res.id}`)
+            .then(() => {
+                itemList.removeChild(li);
+                console.log(expLocal.desc + ' was deleted!');
+            })
+
+
     }
     editBtn.onclick = () => {
-       
-        console.log('Editing:'+ expLocal.desc);
+        axios.delete(`http://localhost:5000/delete-expense/${res.id}`)
+            .then(() => {
+                itemList.removeChild(li);
+                console.log('Editing:' + expLocal.desc);
+            })
+        amt.value = expLocal.amt;
+        desc.value = expLocal.desc;
+        type.value = expLocal.type;
     }
+
+    amt.value = "";
+    desc.value = "";
+    type.value = "";
 }
