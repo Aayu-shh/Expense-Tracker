@@ -7,6 +7,4 @@ const pool = mysql.createPool({
 
 })
 
-// pool.execute('INSERT INTO expenses(amt,desc,type) VALUES(?,?,?)',[500,'asdasd','Movie']).then(result=>console.log(result)).catch(err=>console.log(err));
-
 module.exports = pool.promise();
