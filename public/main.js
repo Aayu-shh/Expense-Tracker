@@ -8,9 +8,7 @@ const itemList = document.querySelector('.items');
 window.addEventListener('DOMContentLoaded', (e) => {
     axios.get('http://localhost:5000/expenses')
         .then(resultObj => {
-            (resultObj.data).forEach(exp => {
-                showOutput(exp);
-            });
+            (resultObj.data).forEach(exp => showOutput(exp))
         })
         .catch(err => console.log(err));
 });
@@ -19,16 +17,12 @@ myForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let exp = {
         amount: amt.value,
-        descp: desc.value,
+        description: desc.value,
         type: type.value
     }
     axios.post('http://localhost:5000/add-expense', exp)
-        .then(() => {
-            axios.get('http://localhost:5000/expenses')
-                .then(resultObj => showOutput(resultObj.data[resultObj.data.length - 1]));
-        })
+        .then((resultObj) =>  showOutput(resultObj.data))
         .catch(err => console.log(err));
-
 })
 
 function showOutput(res) {
@@ -37,19 +31,21 @@ function showOutput(res) {
     delBtn.appendChild(document.createTextNode('Delete'))
     const editBtn = document.createElement('button');
     editBtn.appendChild(document.createTextNode('Edit'))
-    li.appendChild(document.createTextNode(`${res.amount}: ${res.descp} : ${res.type}`))
+    li.appendChild(document.createTextNode(`${res.amount}: ${res.description} : ${res.type}`))
     delBtn.classList = 'btn btn-danger m-2';
     editBtn.classList = 'btn btn-warning';
     li.append(delBtn, editBtn);
     itemList.append(li);
+
     let expLocal = {
         amt: res.amount,
-        desc: res.descp,
+        desc: res.description,
         type: res.type
     }
+
     delBtn.onclick = () => {
         axios.delete(`http://localhost:5000/delete-expense/${res.id}`)
-            .then(() => {
+        .then(() => {
                 itemList.removeChild(li);
                 console.log(expLocal.desc + ' was deleted!');
             })
@@ -58,7 +54,7 @@ function showOutput(res) {
     }
     editBtn.onclick = () => {
         axios.delete(`http://localhost:5000/delete-expense/${res.id}`)
-            .then(() => {
+        .then(() => {
                 itemList.removeChild(li);
                 console.log('Editing:' + expLocal.desc);
             })
