@@ -1,10 +1,27 @@
-A Fullstack Expense Tracker App with following funcionalities :-
-1. Add Amount of Expense, a Description, a Type of Expense
-2. Expenses show up as List below in real-time.
-3. Edit any Expense in the List.
-4. Delete any Expense from the List.
+# Expense Tracker App
 
-TechStack Used :-
+This is a Fullstack Expense Tracker App that allows you to track your expenses and manage your finances.
 
-* FrontEnd : HTML, CSS , JavaScript
-* BackEnd : NodeJs , MySql
+## Features
+
+- Add expenses with amount, description, and type.
+- View expenses in real-time as a list.
+- Edit any expense in the list.
+- Delete any expense from the list.
+
+## Technologies Used
+
+- FrontEnd: HTML, BootStrap CSS, JavaScript
+- BackEnd: Node.js, MySQL
+
+## Getting Started
+
+1. Clone the repository.
+2. Install dependencies with `npm install`.
+3. Set up the MySQL database and configure the connection.
+4. Run the application with `npm start`.
+5. Access the app at `http://localhost:5000`.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
