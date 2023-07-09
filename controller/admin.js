@@ -2,9 +2,9 @@ const db = require('../util/database');
 
 exports.addExpense = (req, res) => {
     const amt = req.body.amount;
-    const desc = req.body.descp;
+    const description = req.body.description;
     const type = req.body.type;
-    db.execute('INSERT INTO expenses(amount,descp,type) VALUES(?,?,?)', [amt, desc, type])
+    db.execute('INSERT INTO expenses(amount,description,type) VALUES(?,?,?)', [amt, description, type])
         .then(result => {
             res.send(result);
         })
