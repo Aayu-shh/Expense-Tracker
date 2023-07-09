@@ -1,6 +1,6 @@
 const myForm = document.getElementById('my-expense-form');
 const amt = document.querySelector('#amount');
-const desc = document.querySelector('#description');
+const description = document.querySelector('#description');
 const type = document.getElementById('expenseType');
 
 const itemList = document.querySelector('.items');
@@ -19,7 +19,7 @@ myForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let exp = {
         amount: amt.value,
-        descp: desc.value,
+        description: description.value,
         type: type.value
     }
     axios.post('http://localhost:5000/add-expense', exp)
@@ -37,21 +37,21 @@ function showOutput(res) {
     delBtn.appendChild(document.createTextNode('Delete'))
     const editBtn = document.createElement('button');
     editBtn.appendChild(document.createTextNode('Edit'))
-    li.appendChild(document.createTextNode(`${res.amount}: ${res.descp} : ${res.type}`))
+    li.appendChild(document.createTextNode(`${res.amount}: ${res.description} : ${res.type}`))
     delBtn.classList = 'btn btn-danger m-2';
     editBtn.classList = 'btn btn-warning';
     li.append(delBtn, editBtn);
     itemList.append(li);
     let expLocal = {
         amt: res.amount,
-        desc: res.descp,
+        description: res.description,
         type: res.type
     }
     delBtn.onclick = () => {
         axios.delete(`http://localhost:5000/delete-expense/${res.id}`)
             .then(() => {
                 itemList.removeChild(li);
-                console.log(expLocal.desc + ' was deleted!');
+                console.log(expLocal.description + ' was deleted!');
             })
 
 
@@ -60,14 +60,14 @@ function showOutput(res) {
         axios.delete(`http://localhost:5000/delete-expense/${res.id}`)
             .then(() => {
                 itemList.removeChild(li);
-                console.log('Editing:' + expLocal.desc);
+                console.log('Editing:' + expLocal.description);
             })
         amt.value = expLocal.amt;
-        desc.value = expLocal.desc;
+        description.value = expLocal.description;
         type.value = expLocal.type;
     }
 
     amt.value = "";
-    desc.value = "";
+    description.value = "";
     type.value = "";
 }
